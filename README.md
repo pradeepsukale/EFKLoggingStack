@@ -17,8 +17,8 @@ From fluentd-daemonset_std.yaml:
       containers:
       - name: fluentd
         image: fluent/fluentd-kubernetes-daemonset:v1-debian-elasticsearch
-        env:
-          - name:  FLUENT_ELASTICSEARCH_HOST
+        env:                                  ----> All these env variables are needed to connect to elasticsearch
+          - name:  FLUENT_ELASTICSEARCH_HOST  
             value: "elasticsearch.logging"    ---> here 'logging' is namespace where elasticsearch is created.
           - name:  FLUENT_ELASTICSEARCH_PORT
             value: "9200"
