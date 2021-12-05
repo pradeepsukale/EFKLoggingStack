@@ -11,3 +11,15 @@ EFK stack for logging in kubernetes deployment
 
 
 fluentd-rbac.yaml - Creates 'ServiceAccount' with 'ClusterRole' to get access to docker logs. Also, once this role is created, it binds the pod to this ClusterRule.
+
+From fluentd-daemonset_std.yaml:
+
+      containers:
+      - name: fluentd
+        image: fluent/fluentd-kubernetes-daemonset:v1-debian-elasticsearch
+        env:
+          - name:  FLUENT_ELASTICSEARCH_HOST
+            value: "elasticsearch.logging"    ---> here 'logging' is namespace where elasticsearch is created.
+          - name:  FLUENT_ELASTICSEARCH_PORT
+            value: "9200"
+
